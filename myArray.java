@@ -37,14 +37,12 @@ public class myArray{
    //Delete()
    public void remove(int idx) {
       if(idx >= 0 && idx < ctr) {
-         for(int i = idx; i < ctr - 1; i++) {
-            arr[i] = arr[i + 1];
-         }
-      }
+      arr[idx] = 0;
+     }
    }
             
    
-   //update()
+   //edit()
    public void edit(int index, int value){
       arr[index] = value;
                   
@@ -95,27 +93,28 @@ public class myArray{
    
    public static void main(String[]args){
       Scanner scan = new Scanner(System.in);
-         System.out.println("enter size: ");
+         System.out.println("Enter size of index: ");
          int size = scan.nextInt();
          myArray m = new myArray(size);
          int n;
           
          do{
+            System.out.println("===MY ARRAY===");
             System.out.println("\n[1] Add");
-            System.out.println("[2] view");
-            System.out.println("[3] remove");
-            System.out.println("[4] search");
-            System.out.println("[5] sortascending");
-            System.out.println("[6] sortdescending");
-            System.out.println("[7] edit");
-            System.out.println("[8] exit\n");
+            System.out.println("[2] View");
+            System.out.println("[3] Remove");
+            System.out.println("[4] Search");
+            System.out.println("[5] Sort Ascending");
+            System.out.println("[6] Sort Descending");
+            System.out.println("[7] Edit");
+            System.out.println("[8] Exit\n");
             
-            System.out.println("enter your choice: ");
+            System.out.println("ENTER YOUR CHOICE: ");
             n = scan.nextInt();
             
             switch(n){
                case 1:
-                    System.out.println("Enter number to add: ");
+                    System.out.println("ENTER NUMBER TO ADD: ");
                     int value = scan.nextInt();
                     m.add(value);
                     break;
@@ -123,15 +122,32 @@ public class myArray{
                     m.view();                 
                     break;
                case 3:
-                    System.out.println("Enter index to remove"); 
+                    System.out.println("ENTER INDEX TO REMOVE: "); 
                     int idx = scan.nextInt();
                     m.remove(idx);
                     break;
                case 4:
-                    System.out.println("Enter value to search");
+                    System.out.println("ENTER VALUE TO SEARCH: ");
                     int vlue = scan.nextInt();
-                    m.search(vlue);      
-               default:
+                    m.search(vlue);
+                    break;
+               case 5:
+                    m.sort('a');
+                    break;
+               case 6:
+                    m.sort('d');
+                    break;
+               case 7:
+                    System.out.println("ENTER VALUE TO REPLACE: ");
+                    int valuetoreplace = scan.nextInt();
+                    System.out.println("ENTER INDEX TO EDIT: ");
+                    int indextoedit = scan.nextInt();
+                    m.edit(indextoedit, valuetoreplace);  
+                    break;
+               case 8:
+                    System.out.println("Exit....");
+                    break;                      
+               default: 
             }
          }
          while(n != 8);
